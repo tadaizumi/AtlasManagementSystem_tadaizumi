@@ -15,8 +15,6 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // Register your seeders here
-        $this->call([
-
-        ]);
+        $this->call();
     }
 }
