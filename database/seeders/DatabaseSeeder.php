@@ -15,6 +15,9 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // Register your seeders here
-        $this->call(SubjectsTableSeeder::class);
+        $this->call([
+            UsersTableSeeder::class,
+            SubjectsTableSeeder::class,
+        ]);
     }
 }
