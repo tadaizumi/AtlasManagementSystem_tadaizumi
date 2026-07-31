@@ -15,6 +15,20 @@ class SubjectsTableSeeder extends Seeder
      */
     public function run()
     {
+        Subjects::create([
+            'id' => 1,
+            'subject' => '国語',
+        ]);
+
+        Subjects::create([
+            'id' => 2,
+            'subject' => '数学',
+        ]);
+
+        Subjects::create([
+            'id' => 3,
+            'subject' => '英語',
+        ]);
 
     }
 }
