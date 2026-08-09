@@ -10,6 +10,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\Posts\Like;
 use Auth;
 
+use App\Models\Users\Subjects;
+
 class User extends Authenticatable
 {
     use Notifiable;
@@ -66,8 +68,9 @@ class User extends Authenticatable
         return $this->belongsToMany('App\Models\Calendars\ReserveSettings', 'reserve_setting_users', 'user_id', 'reserve_setting_id')->withPivot('id');
     }
 
+    // リレーションの定義
     public function subjects(){
-        return ;// リレーションの定義
+        return $this->belongsToMany(Subjects::class, 'subject_users', 'user_id', 'subject_id');
     }
 
     // いいねしているかどうか
