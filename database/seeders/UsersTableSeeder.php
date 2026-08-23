@@ -15,7 +15,7 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         User::create([
-            'id' => 1,
+            'id' => 2,
             'over_name' => '山田',
             'under_name' => '太郎',
             'over_name_kana' => 'ヤマダ',
@@ -28,7 +28,7 @@ class UsersTableSeeder extends Seeder
         ]);
 
         User::create([
-            'id' => 2,
+            'id' => 3,
             'over_name' => '山田',
             'under_name' => '花子',
             'over_name_kana' => 'ヤマダ',
@@ -41,7 +41,7 @@ class UsersTableSeeder extends Seeder
         ]);
 
         User::create([
-            'id' => 3,
+            'id' => 4,
             'over_name' => '川田',
             'under_name' => 'なつ',
             'over_name_kana' => 'カワタ',
