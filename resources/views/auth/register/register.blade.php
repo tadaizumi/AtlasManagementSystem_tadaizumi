@@ -3,6 +3,11 @@
     <div class="w-100 vh-100 d-flex" style="align-items:center; justify-content:center;">
       <div class="w-25 vh-75 border p-3">
         <div class="register_form">
+          @if ($errors->has('over_name') || $errors->has('under_name'))
+            @foreach($errors->get('over_name') as $message)
+            {{ $message }}<br>
+            @endforeach
+          @endif
           <div class="d-flex mt-3" style="justify-content:space-between">
             <div class="" style="width:140px">
               <label class="d-block m-0" style="font-size:13px">姓</label>
@@ -17,6 +22,11 @@
               </div>
             </div>
           </div>
+          @if ($errors->has('over_name_kana') || $errors->has('under_name_kana'))
+            @foreach($errors->get('over_name_kana') as $message)
+            {{ $message }}<br>
+            @endforeach
+          @endif
           <div class="d-flex mt-3" style="justify-content:space-between">
             <div class="" style="width:140px">
               <label class="d-block m-0" style="font-size:13px">セイ</label>
@@ -31,6 +41,11 @@
               </div>
             </div>
           </div>
+          @if ($errors->has('mail_address'))
+            @foreach($errors->get('mail_address') as $message)
+            {{ $message }}<br>
+            @endforeach
+          @endif
           <div class="mt-3">
             <label class="m-0 d-block" style="font-size:13px">メールアドレス</label>
             <div class="border-bottom border-primary">
@@ -38,6 +53,11 @@
             </div>
           </div>
         </div>
+        @if ($errors->has('sex'))
+          @foreach($errors->get('sex') as $message)
+          {{ $message }}<br>
+          @endforeach
+        @endif
         <div class="mt-3">
           <input type="radio" name="sex" class="sex" value="1">
           <label style="font-size:13px">男性</label>
@@ -46,6 +66,11 @@
           <input type="radio" name="sex" class="sex" value="3">
           <label style="font-size:13px">その他</label>
         </div>
+        @if ($errors->has('combined_date'))
+          @foreach($errors->get('combined_date') as $message)
+          {{ $message }}<br>
+          @endforeach
+        @endif
         <div class="mt-3">
           <label class="d-block m-0 aa" style="font-size:13px">生年月日</label>
           <select class="old_year" name="old_year">
@@ -130,6 +155,11 @@
           </select>
           <label style="font-size:13px">日</label>
         </div>
+        @if ($errors->has('role'))
+          @foreach($errors->get('role') as $message)
+          {{ $message }}<br>
+          @endforeach
+        @endif
         <div class="mt-3">
           <label class="d-block m-0" style="font-size:13px">役職</label>
           <input type="radio" name="role" class="admin_role role" value="1">
@@ -150,6 +180,11 @@
           </div>
           @endforeach
         </div>
+        @if ($errors->has('password'))
+          @foreach($errors->get('password') as $message)
+          {{ $message }}<br>
+          @endforeach
+        @endif
         <div class="mt-3">
           <label class="d-block m-0" style="font-size:13px">パスワード</label>
           <div class="border-bottom border-primary">
