@@ -31,10 +31,4 @@ class Post extends Model
     public function commentCounts($post_id){
         return Post::with('postComments')->find($post_id)->postComments();
     }
-
-    //いいね数カウントのためリレーション
-    public function likes(){
-        return $this->hasMany(Like::class);
-    }
-
 }
