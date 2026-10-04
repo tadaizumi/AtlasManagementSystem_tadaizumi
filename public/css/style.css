@@ -280,7 +280,17 @@ li {
 
 
 
+/* 投稿削除ボタン */
+.btn-link-style {
+  background: none;
+  border: none;
+  color: #007bff;
+  cursor: pointer;
+  padding: 0;
+  font: inherit;
+}
 
-/* .vh-100 {
-  height: auto;
-} */
+.post-edit {
+  display: flex;
+  gap: 10px;
+}

@@ -2,16 +2,26 @@
 <div class="vh-100 d-flex">
   <div class="w-50 mt-5">
     <div class="m-3 detail_container">
+      @foreach ($errors->all() as $error)
+        <li>{{$error}}</li>
+      @endforeach
       <div class="p-3">
         <div class="detail_inner_head">
           <div>
           </div>
-          <div>
-            <span class="edit-modal-open" post_title="{{ $post->post_title }}" post_body="{{ $post->post }}" post_id="{{ $post->id }}">編集</span>
-            <a href="{{ route('post.delete', ['id' => $post->id]) }}">削除</a>
-          </div>
+          @auth
+            @if (Auth::id() === $post->user_id)
+              <div class="post-edit">
+                <span class="edit-modal-open" post_title="{{ $post->post_title }}" post_body="{{ $post->post }}" post_id="{{ $post->id }}">編集</span>
+                <form action="{{ route('post.delete', ['id' => $post->id]) }}" method="POST" onsubmit="return confirm('削除してよろしいですか？');">
+                  @csrf
+                  @method('DELETE')
+                  <button type="submit" class="btn-link-style">削除</button>
+                </form>
+              </div>
+            @endif
+          @endauth
         </div>
-
         <div class="contributor d-flex">
           <p>
             <span>{{ $post->user->over_name }}</span>
@@ -72,4 +82,5 @@
     </form>
   </div>
 </div>
+
 </x-sidebar>

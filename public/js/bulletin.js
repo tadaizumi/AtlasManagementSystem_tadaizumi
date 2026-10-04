@@ -59,7 +59,7 @@ $(function () {
     return false;
   });
   $('.js-modal-close').on('click', function () {
-    $('.js-modal').fadeOut();
+    $('.js-modal').fadeOut()
     return false;
   });
 
