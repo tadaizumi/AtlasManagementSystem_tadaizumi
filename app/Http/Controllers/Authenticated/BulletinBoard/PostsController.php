@@ -121,4 +121,11 @@ class PostsController extends Controller
 
         return response()->json();
     }
+
+    // public function index(){
+    //     // likes クエリを指定すると 'likes_count' が取得できる
+    //     $posts = Post::withCount('likes')->get();
+
+    //     return view('post.show', compact('posts'));
+    // }
 }
