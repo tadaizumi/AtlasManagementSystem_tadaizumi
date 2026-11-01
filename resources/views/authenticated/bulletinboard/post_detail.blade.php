@@ -51,6 +51,9 @@
   </div>
   <div class="w-50 p-3">
     <div class="comment_container border m-5">
+      @if($errors->first('comment'))
+      <span class="error_message">{{ $errors->first('comment') }}</span>
+      @endif
       <div class="comment_area p-3">
         <p class="m-0">コメントする</p>
         <textarea class="w-100" name="comment" form="commentRequest"></textarea>
