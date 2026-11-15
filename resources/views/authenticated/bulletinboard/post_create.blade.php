@@ -7,6 +7,10 @@
         @foreach($main_categories as $main_category)
         <optgroup label="{{ $main_category->main_category }}">
         <!-- サブカテゴリー表示 -->
+
+
+        <!-- optgroup調べてサブカテゴリーを選択できるようにする！！！！！ -->
+
         </optgroup>
         @endforeach
       </select>
@@ -33,13 +37,50 @@
   @can('admin')
   <div class="w-25 ml-auto mr-auto">
     <div class="category_area mt-5 p-5">
+
       <div class="">
         <p class="m-0">メインカテゴリー</p>
         <input type="text" class="w-100" name="main_category_name" form="mainCategoryRequest">
         <input type="submit" value="追加" class="w-100 btn btn-primary p-0" form="mainCategoryRequest">
       </div>
-      <!-- サブカテゴリー追加 -->
+
       <form action="{{ route('main.category.create') }}" method="post" id="mainCategoryRequest">{{ csrf_field() }}</form>
+
+
+
+
+
+      <!-- サブカテゴリー追加 -->
+      <form action="{{ route('sub.category.create') }}" method="POST">
+        @csrf
+
+        <p class="m-0">サブカテゴリー</p>
+
+        <div>
+          <select name="main_category_id" id="main_category_id" required>
+            <option value="">---</option>
+            @foreach ($main_categories as $main_category)
+                <option value="{{ $main_category->id }}" {{ old('main_category_id') == $main_category->id ? 'selected' : '' }}>
+                    {{ $main_category->main_category }}
+                </option>
+            @endforeach
+          </select>
+          @error('main_category_id')
+            <p style="color: red;">{{ $message }}</p>
+          @enderror
+        </div>
+
+        <div>
+          <input type="text" name="sub_category" id="name" value="{{ old('sub_category') }}" required>
+          @error('sub_category')
+            <p style="color: red;">{{ $message }}</p>
+          @enderror
+        </div>
+
+        <!-- <button type="submit">追加</button> -->
+        <input type="submit" value="追加" class="w-100 btn btn-primary p-0">
+      </form>
+
     </div>
   </div>
   @endcan

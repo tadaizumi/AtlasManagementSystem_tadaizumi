@@ -69,10 +69,29 @@ class PostsController extends Controller
         Post::findOrFail($id)->delete();
         return redirect()->route('post.show');
     }
+
     public function mainCategoryCreate(Request $request){
         MainCategory::create(['main_category' => $request->main_category_name]);
         return redirect()->route('post.input');
     }
+
+
+    // サブカテゴリー追加
+    public function subCategoryCreate(Request $request){
+        // セレクトボックス用にメインカテゴリ一覧を取得
+        $main_categories = MainCategory::all();
+
+        // バリデーション（存在するメインカテゴリIDかどうかもチェック）
+        $validated = $request->validate([
+            'main_category_id' => 'required|exists:main_categories,id',
+            'sub_category' => 'required|string|max:100|unique:sub_categories',
+        ]);
+
+        SubCategory::create($validated);
+
+        return redirect()->route('post.input');
+    }
+
 
     public function commentCreate(PostFormRequest $request){
         PostComment::create([

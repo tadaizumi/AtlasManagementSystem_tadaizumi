@@ -5,6 +5,7 @@ namespace App\Models\Users;
 use Illuminate\Database\Eloquent\Model;
 
 use App\Models\Users\User;
+use App\Models\Categories\SubCategory;
 
 class Subjects extends Model
 {
